@@ -34,52 +34,52 @@
 
         <!-- Navigation-->
         {% block navigation %}
-            {% include "base/navigation.html" %}
+            {% include "pages/navigation.html" %}
         {% endblock navigation %}
 
         <!-- Masthead-->
         {% block masthead %}
-            {% include "base/masthead.html" %}
+            {% include "pages/masthead.html" %}
         {% endblock masthead%}
 
         <!-- Services-->
         {% block services %}
-            {% include "base/services.html" %}
+            {% include "pages/services.html" %}
         {% endblock services%}
 
         <!-- Portfolio Grid-->
         {% block portfolio %}
-            {% include "base/portfolio.html" %}
+            {% include "pages/portfolio.html" %}
         {% endblock portfolio%}
 
         <!-- About-->
         {% block about %}
-            {% include "base/about.html" %}
+            {% include "pages/about.html" %}
         {% endblock about%}
 
         <!-- Team-->
         {% block team %}
-            {% include "base/team.html" %}
+            {% include "pages/team.html" %}
         {% endblock team%}
 
         <!-- Clients-->
         {% block clients %}
-            {% include "base/clients.html" %}
+            {% include "pages/clients.html" %}
         {% endblock clients%}
 
         <!-- Contact-->
         {% block contact %}
-            {% include "base/contact.html" %}
+            {% include "pages/contact.html" %}
         {% endblock contact%}
 
         <!-- Footer-->
         {% block footer %}
-            {% include 'base/footer.html' %}
+            {% include 'pages/footer.html' %}
         {% endblock footer %}
 
         <!-- Portfolio Models-->
         {% block models %}
-            {% include "base/models.html" %}
+            {% include "pages/models.html" %}
         {% endblock models%}
 
 
@@ -93,5 +93,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="{% static 'https://cdn.startbootstrap.com/sb-forms-latest.js' %}"></script>
+        {% block js_scripts %}{% endblock js_scripts %}
     </body>
+    
 </html>
