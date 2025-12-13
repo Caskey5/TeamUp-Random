@@ -1,0 +1,2 @@
+# TeamUp-Random
+Django webapp.
