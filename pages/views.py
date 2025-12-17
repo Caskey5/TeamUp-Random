@@ -8,33 +8,33 @@ class HomePageView(TemplateView):
 
 # Additional page views
 class AboutView(TemplateView):
-    template_name = "pages/about.html"
+    template_name = "base/about.html"
 
 class ClientsView(TemplateView):
-    template_name = "pages/clients.html"
+    template_name = "base/clients.html"
 
 class ContactView(TemplateView):
-    template_name = "pages/contact.html"
+    template_name = "base/contact.html"
 
 class FooterView(TemplateView):
-    template_name = "pages/footer.html"
+    template_name = "base/footer.html"
 
 class MastheadView(TemplateView):
-    template_name = "pages/masthead.html"
+    template_name = "base/masthead.html"
 
 class NavigationView(TemplateView):
-    template_name = "pages/navigation.html"
+    template_name = "base/navigation.html"
 
 class PortfolioGridView(TemplateView):
-    template_name = "pages/portfolio_grid.html"
+    template_name = "base/portfolio_grid.html"
 
 class PortfolioModelsView(TemplateView):
-    template_name = "pages/portfolio_models.html"
+    template_name = "base/portfolio_models.html"
 
 class ServicesView(TemplateView):
-    template_name = "pages/services.html"
+    template_name = "base/services.html"
 
 class TeamView(TemplateView):
-    template_name = "pages/team.html"
+    template_name = "base/team.html"
 
 
