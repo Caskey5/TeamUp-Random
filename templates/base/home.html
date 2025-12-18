@@ -77,6 +77,11 @@
             {% include "base/contact.html" %}
         {% endblock contact%}
 
+        <!-- Page Content - za child stranice -->
+        {% comment %} {% block content_page %}
+
+        {% endblock content_page %} {% endcomment %}
+
         <!-- Footer-->
         {% block footer %}
             {% include 'base/footer.html' %}
