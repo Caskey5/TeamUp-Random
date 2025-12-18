@@ -1,4 +1,8 @@
 from django.views.generic import TemplateView
+from django.views.generic import  CreateView
+
+from .models import SportChoice
+from django.urls import reverse_lazy
 
 # Home page
 class HomePageView(TemplateView):
@@ -38,3 +42,10 @@ class TeamView(TemplateView):
     template_name = "base/team.html"
 
 
+
+class ChooseSportView(CreateView):
+    model = SportChoice
+    template_name = "pages/choose_sport.html"
+    fields = "__all__"
+
+    success_url = reverse_lazy("pages:choose_sport")

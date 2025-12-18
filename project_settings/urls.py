@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('pages.urls', 'pages'), namespace='pages')),
     #path('account/', include(('account.urls', 'account'), namespace='account')),
-    path('choose_sport/', include(('generate_team.urls', 'generate_team'), namespace='generate_team')),
+    #path('choose_sport/', include(('generate_team.urls', 'generate_team'), namespace='generate_team')),
 ]
