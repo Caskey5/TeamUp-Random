@@ -16,6 +16,6 @@ urlpatterns = [
     path('team/', HomePageView.as_view(), name='team'),
 
 
-    path('sports/', ChooseSportView.as_view(), name='choose_sport'),
+    path('sports/', ChooseSportView.as_view(), name='choose_sports'),
 
 ]

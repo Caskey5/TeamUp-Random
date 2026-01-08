@@ -45,7 +45,7 @@ class TeamView(TemplateView):
 
 class ChooseSportView(CreateView):
     model = SportChoice
-    template_name = "pages/choose_sport.html"
+    template_name = "pages/choose_sports.html"
     fields = "__all__"
 
-    success_url = reverse_lazy("pages:choose_sport")
+    success_url = reverse_lazy("pages:choose_sports")
