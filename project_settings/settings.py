@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     'pages',
     'account',
-    'generate_team',
 
     'crispy_forms',
     'crispy_bootstrap5'

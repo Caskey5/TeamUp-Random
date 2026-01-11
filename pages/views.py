@@ -9,7 +9,6 @@ class HomePageView(TemplateView):
     template_name = "base/home.html"
 
 
-
 # Additional page views
 class AboutView(TemplateView):
     template_name = "base/about.html"
@@ -49,3 +48,6 @@ class ChooseSportView(CreateView):
     fields = "__all__"
 
     success_url = reverse_lazy("pages:choose_sports")
+
+class SportFormationView(TemplateView):
+    template_name = "pages/sports/football_formations.html"

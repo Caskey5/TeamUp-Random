@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import ChooseSportView, HomePageView
+from .views import ChooseSportView, HomePageView, SportFormationView
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
@@ -17,5 +17,10 @@ urlpatterns = [
 
 
     path('sports/', ChooseSportView.as_view(), name='choose_sports'),
+    path('sports/football_formations/', SportFormationView.as_view(), name='football_formations'),
 
 ]
+
+
+
+

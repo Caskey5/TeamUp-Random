@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block page_title %}
+        <title>Nogomet - Odabir Formacije</title> 
+    {% endblock page_title %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    {% block head_css %}
+        <link rel="stylesheet" href="{% static 'css/pages/football_formations.css' %}" />
+    {% endblock head_css %}
+
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="football-ball">⚽</div>
+        <div class="football-ball">⚽</div>
+        <div class="football-ball">⚽</div>
+        <div class="football-ball">⚽</div>
+        <div class="football-ball">⚽</div>
+        <div class="football-ball">⚽</div>
+    </div>
+
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">⚽</div>
+            <h1>Odaberi Formaciju</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi broj igrača za svoj nogometni tim</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- 5+1 Formation -->
+            <div class="formation-card">
+                <span class="formation-icon">👥</span>
+                <h2 class="formation-title">5 + 1</h2>
+                <p class="formation-players">6 igrača ukupno</p>
+                <p class="formation-description">
+                    Idealno za male terene. 5 igrača u polju + 1 golman.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 4+1 Formation -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">👥👥</span>
+                <h2 class="formation-title">4 + 1</h2>
+                <p class="formation-players">5 igrača ukupno</p>
+                <p class="formation-description">
+                    Najčešća opcija za mali nogomet. 4 igrača u polju + golman.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 10+1 Formation -->
+            <div class="formation-card">
+                <span class="formation-icon">👥👥👥</span>
+                <h2 class="formation-title">10 + 1</h2>
+                <p class="formation-players">11 igrača ukupno</p>
+                <p class="formation-description">
+                    Standardna formacija za veliki teren. 10 igrača + golman.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Košarka - Odabir Formacije</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/pages/basketball_formats.css' %}" />
+
+    
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="basketball-ball">🏀</div>
+        <div class="basketball-ball">🏀</div>
+        <div class="basketball-ball">🏀</div>
+        <div class="basketball-ball">🏀</div>
+        <div class="basketball-ball">🏀</div>
+        <div class="basketball-ball">🏀</div>
+    </div>
+
+    <a href="#" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">🏀</div>
+            <h1>Odaberi Format</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi broj igrača za košarkašku utakmicu</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- 6v6 Format -->
+            <div class="formation-card">
+                <span class="formation-icon">🏀</span>
+                <h2 class="formation-title">6v6</h2>
+                <p class="formation-players">12 igrača ukupno</p>
+                <p class="formation-description">
+                    Puni teren sa rotacijama. 6 igrača po timu za potpuno košarkaško iskustvo.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 3v3 Format -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">🏀🏀</span>
+                <h2 class="formation-title">3v3</h2>
+                <p class="formation-players">6 igrača ukupno</p>
+                <p class="formation-description">
+                    Streetball format - 1 koš. Brza i dinamična igra s 3 igrača po timu.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
