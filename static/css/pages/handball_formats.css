@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odbojka - Odabir Formata</title>
-    <style>
-        * {
+ * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -47,24 +40,24 @@
             z-index: 1;
         }
 
-        .volleyball-ball {
+        .handball-ball {
             position: absolute;
-            font-size: 48px;
+            font-size: 46px;
             opacity: 0.1;
-            animation: float 19s infinite ease-in-out;
+            animation: float 21s infinite ease-in-out;
             filter: grayscale(100%);
         }
 
-        .volleyball-ball:nth-child(1) { left: 7%; top: 16%; animation-delay: 0s; }
-        .volleyball-ball:nth-child(2) { right: 11%; top: 26%; animation-delay: 2.8s; }
-        .volleyball-ball:nth-child(3) { left: 17%; bottom: 23%; animation-delay: 5.5s; }
-        .volleyball-ball:nth-child(4) { right: 16%; bottom: 28%; animation-delay: 8.2s; }
-        .volleyball-ball:nth-child(5) { left: 47%; top: 13%; animation-delay: 3.7s; }
-        .volleyball-ball:nth-child(6) { right: 42%; bottom: 18%; animation-delay: 6.9s; }
+        .handball-ball:nth-child(1) { left: 6%; top: 17%; animation-delay: 0s; }
+        .handball-ball:nth-child(2) { right: 13%; top: 27%; animation-delay: 3.2s; }
+        .handball-ball:nth-child(3) { left: 19%; bottom: 24%; animation-delay: 6.1s; }
+        .handball-ball:nth-child(4) { right: 17%; bottom: 31%; animation-delay: 8.7s; }
+        .handball-ball:nth-child(5) { left: 46%; top: 14%; animation-delay: 4.3s; }
+        .handball-ball:nth-child(6) { right: 41%; bottom: 19%; animation-delay: 7.4s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-38px) rotate(180deg); }
+            50% { transform: translateY(-42px) rotate(180deg); }
         }
 
         .back-btn {
@@ -125,13 +118,12 @@
         .sport-icon-header {
             font-size: 4rem;
             margin-bottom: 20px;
-            animation: spike 1.8s infinite ease-in-out;
+            animation: throw 2.5s infinite ease-in-out;
         }
 
-        @keyframes spike {
-            0%, 100% { transform: translateY(0) scale(1); }
-            25% { transform: translateY(-20px) scale(1.15); }
-            50% { transform: translateY(0) scale(1); }
+        @keyframes throw {
+            0%, 100% { transform: translateX(-10px) rotate(-10deg); }
+            50% { transform: translateX(10px) rotate(10deg); }
         }
 
         .header h1 {
@@ -160,8 +152,8 @@
 
         .formations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             width: 100%;
             max-width: 850px;
             animation: fadeInUp 0.8s ease-out;
@@ -315,71 +307,3 @@
         .formation-card:nth-child(2) {
             animation-delay: 0.2s;
         }
-
-        .formation-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-    </style>
-</head>
-<body>
-    <div class="background-pattern"></div>
-    
-    <div class="floating-balls">
-        <div class="volleyball-ball">🏐</div>
-        <div class="volleyball-ball">🏐</div>
-        <div class="volleyball-ball">🏐</div>
-        <div class="volleyball-ball">🏐</div>
-        <div class="volleyball-ball">🏐</div>
-        <div class="volleyball-ball">🏐</div>
-    </div>
-
-    <a href="#" class="back-btn">
-        ← Nazad
-    </a>
-
-    <div class="container">
-        <div class="header">
-            <div class="sport-icon-header">🏐</div>
-            <h1>Odaberi Format</h1>
-            <hr class="divider" />
-            <p class="subtitle">Izaberi format odbojkaške utakmice</p>
-        </div>
-
-        <div class="formations-grid">
-            <!-- 6v6 -->
-            <div class="formation-card">
-                <span class="popular-badge">Popularno</span>
-                <span class="formation-icon">🏐</span>
-                <h2 class="formation-title">6v6</h2>
-                <p class="formation-players">12 igrača ukupno</p>
-                <p class="formation-description">
-                    Standardna odbojka - 6 igrača po timu s rotacijom i svim pozicijama.
-                </p>
-                <button class="select-btn">Odaberi</button>
-            </div>
-
-            <!-- 4v4 -->
-            <div class="formation-card">
-                <span class="formation-icon">🏐🏐</span>
-                <h2 class="formation-title">4v4</h2>
-                <p class="formation-players">8 igrača ukupno</p>
-                <p class="formation-description">
-                    Brža igra na manjem terenu - idealno za rekreativce i zatvorene sale.
-                </p>
-                <button class="select-btn">Odaberi</button>
-            </div>
-
-            <!-- 2v2 Beach -->
-            <div class="formation-card">
-                <span class="formation-icon">🏖️</span>
-                <h2 class="formation-title">2v2</h2>
-                <p class="formation-players">4 igrača ukupno</p>
-                <p class="formation-description">
-                    Beach volleyball - najpopularniji format igre na pijesku.
-                </p>
-                <button class="select-btn">Odaberi</button>
-            </div>
-        </div>
-    </div>
-</body>
-</html>

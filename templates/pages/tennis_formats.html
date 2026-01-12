@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenis - Odabir Formata</title>
+
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/pages/tennis_formats.css' %}" />
+
+
+
+
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="tennis-ball">🎾</div>
+        <div class="tennis-ball">🎾</div>
+        <div class="tennis-ball">🎾</div>
+        <div class="tennis-ball">🎾</div>
+        <div class="tennis-ball">🎾</div>
+    </div>
+
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">🎾</div>
+            <h1>Odaberi Format</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi format teniskog meča</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- Singles -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">🎾</span>
+                <h2 class="formation-title">Pojedinačno</h2>
+                <p class="formation-players">2 igrača (1v1)</p>
+                <p class="formation-description">
+                    Klasični tenis - jedan na jedan. Najpopularniji format teniske igre.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- Doubles -->
+            <div class="formation-card">
+                <span class="formation-icon">🎾🎾</span>
+                <h2 class="formation-title">Parovi</h2>
+                <p class="formation-players">4 igrača (2v2)</p>
+                <p class="formation-description">
+                    Tenis u parovima - dinamična igra s timskom strategijom i koordinacijom.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

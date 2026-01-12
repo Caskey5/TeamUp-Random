@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rukomet - Odabir Formacije</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    {% block head_css %}
+        <link rel="stylesheet" href="{% static 'css/pages/handball_formats.css' %}" />
+    {% endblock head_css %}
+
+
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+    </div>
+
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">🤾</div>
+            <h1>Odaberi Formaciju</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi broj igrača za rukometnu utakmicu</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- 7v7 -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">🤾</span>
+                <h2 class="formation-title">6 + 1</h2>
+                <p class="formation-players">14 igrača ukupno</p>
+                <p class="formation-description">
+                    Standardna rukometna formacija - 6 igrača u polju + 1 golman po timu.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 5v5 -->
+            <div class="formation-card">
+                <span class="formation-icon">🤾🤾</span>
+                <h2 class="formation-title">4 + 1</h2>
+                <p class="formation-players">10 igrača ukupno</p>
+                <p class="formation-description">
+                    Mala dvorana ili vanjski teren - 4 igrača u polju + golman. Brža igra.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rukomet - Odabir Formacije</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+        <div class="handball-ball">🤾</div>
+    </div>
+
+    <a href="#" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">🤾</div>
+            <h1>Odaberi Formaciju</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi broj igrača za rukometnu utakmicu</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- 7v7 -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">🤾</span>
+                <h2 class="formation-title">6 + 1</h2>
+                <p class="formation-players">14 igrača ukupno</p>
+                <p class="formation-description">
+                    Standardna rukometna formacija - 6 igrača u polju + 1 golman po timu.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 5v5 -->
+            <div class="formation-card">
+                <span class="formation-icon">🤾🤾</span>
+                <h2 class="formation-title">4 + 1</h2>
+                <p class="formation-players">10 igrača ukupno</p>
+                <p class="formation-description">
+                    Mala dvorana ili vanjski teren - 4 igrača u polju + golman. Brža igra.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

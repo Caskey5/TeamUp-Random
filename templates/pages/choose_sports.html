@@ -15,14 +15,6 @@
 </head>
 <body>
     <div class="background-pattern"></div>
-    
-    <div class="floating-icons">
-        <div class="sport-icon">⚽</div>
-        <div class="sport-icon">🏀</div>
-        <div class="sport-icon">🎾</div>
-        <div class="sport-icon">🏐</div>
-        <div class="sport-icon">⚾</div>
-    </div>
 
     <div class="container">
         <div class="card">
@@ -30,27 +22,20 @@
                 <h2>Odaberi svoj sport</h2>
                 <hr class="divider" />
                 <p class="subtitle">Izaberi sport za koji želiš generirati tim i kreni u akciju!</p>
-            </div>
-
-            <form method="post">
-                {% csrf_token %}
-                
+            </div>             
                 <div class="form-group">
-                    <label class="form-label">Sport</label>
-                    <select class="form-control" name="sport" required>
-                        <option value="">-- Odaberi sport --</option>
-                        <option value="football">⚽ Nogomet</option>
-                        <option value="basketball">🏀 Košarka</option>
-                        <option value="tennis">🎾 Tenis</option>
-                        <option value="volleyball">🏐 Odbojka</option>
-                        <option value="handball">🤾 Rukomet</option>
-                        <option value="baseball">⚾ Baseball</option>
+
+                    <form method="post">
+                    {% csrf_token %}
+
+                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:football_formats' %}">Football</a>
+                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:basketball_formats' %}">Basketball</a>
+                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:tennis_formats' %}">Tennis</a>
+                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:handball_formats' %}">Handball</a>
+                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:volleyball_formats' %}">Volleyball</a>
+
                     </select>
                 </div>
-
-                <button type="submit" class="btn-submit">
-                    Generiraj Tim
-                </button>
             </form>
         </div>
     </div>

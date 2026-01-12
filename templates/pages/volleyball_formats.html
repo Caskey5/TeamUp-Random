@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odbojka - Odabir Formata</title>
+
+
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/pages/volleyball_formats.css' %}" />
+
+
+
+
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="volleyball-ball">🏐</div>
+        <div class="volleyball-ball">🏐</div>
+        <div class="volleyball-ball">🏐</div>
+        <div class="volleyball-ball">🏐</div>
+        <div class="volleyball-ball">🏐</div>
+        <div class="volleyball-ball">🏐</div>
+    </div>
+
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <div class="sport-icon-header">🏐</div>
+            <h1>Odaberi Format</h1>
+            <hr class="divider" />
+            <p class="subtitle">Izaberi format odbojkaške utakmice</p>
+        </div>
+
+        <div class="formations-grid">
+            <!-- 6v6 -->
+            <div class="formation-card">
+                <span class="popular-badge">Popularno</span>
+                <span class="formation-icon">🏐</span>
+                <h2 class="formation-title">6v6</h2>
+                <p class="formation-players">12 igrača ukupno</p>
+                <p class="formation-description">
+                    Standardna odbojka - 6 igrača po timu s rotacijom i svim pozicijama.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 4v4 -->
+            <div class="formation-card">
+                <span class="formation-icon">🏐🏐</span>
+                <h2 class="formation-title">4v4</h2>
+                <p class="formation-players">8 igrača ukupno</p>
+                <p class="formation-description">
+                    Brža igra na manjem terenu - idealno za rekreativce i zatvorene sale.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+
+            <!-- 2v2 Beach -->
+            <div class="formation-card">
+                <span class="formation-icon">🏖️</span>
+                <h2 class="formation-title">2v2</h2>
+                <p class="formation-players">4 igrača ukupno</p>
+                <p class="formation-description">
+                    Beach volleyball - najpopularniji format igre na pijesku.
+                </p>
+                <button class="select-btn">Odaberi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
