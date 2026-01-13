@@ -10,11 +10,23 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/pages/choose_sports.css' %}">
+    
+    {% block head_css %}
+        <link rel="stylesheet" href="{% static 'css/pages/choose_sports.css' %}" />
+    {% endblock head_css %}
+
+    
 </head>
 <body>
     <div class="background-pattern"></div>
+
+    <div class="floating-icons">
+        <div class="sport-icon-float">⚽</div>
+        <div class="sport-icon-float">🏀</div>
+        <div class="sport-icon-float">🎾</div>
+        <div class="sport-icon-float">🏐</div>
+        <div class="sport-icon-float">🤾</div>
+    </div>
 
     <div class="container">
         <div class="card">
@@ -22,21 +34,34 @@
                 <h2>Odaberi svoj sport</h2>
                 <hr class="divider" />
                 <p class="subtitle">Izaberi sport za koji želiš generirati tim i kreni u akciju!</p>
-            </div>             
-                <div class="form-group">
+            </div>
 
-                    <form method="post">
-                    {% csrf_token %}
+            <div class="sports-grid">
+                <a href="{% url 'pages:football_formats' %}" class="sport-btn">
+                    <span class="sport-icon">⚽</span>
+                    <span class="sport-name">Nogomet</span>
+                </a>
 
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:football_formats' %}">Football</a>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:basketball_formats' %}">Basketball</a>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:tennis_formats' %}">Tennis</a>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:handball_formats' %}">Handball</a>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'pages:volleyball_formats' %}">Volleyball</a>
+                <a href="{% url 'pages:basketball_formats' %}" class="sport-btn">
+                    <span class="sport-icon">🏀</span>
+                    <span class="sport-name">Košarka</span>
+                </a>
 
-                    </select>
-                </div>
-            </form>
+                <a href="{% url 'pages:tennis_formats' %}" class="sport-btn">
+                    <span class="sport-icon">🎾</span>
+                    <span class="sport-name">Tenis</span>
+                </a>
+
+                <a href="{% url 'pages:volleyball_formats' %}" class="sport-btn">
+                    <span class="sport-icon">🏐</span>
+                    <span class="sport-name">Odbojka</span>
+                </a>
+
+                <a href="{% url 'pages:handball_formats' %}" class="sport-btn">
+                    <span class="sport-icon">🤾</span>
+                    <span class="sport-name">Rukomet</span>
+                </a>
+            </div>
         </div>
     </div>
 </body>
