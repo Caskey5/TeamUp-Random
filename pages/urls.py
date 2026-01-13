@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (
+from pages.views import (
     BasketballFormatsView, 
     ChooseSportView, 
     FootballFormatsView, 
