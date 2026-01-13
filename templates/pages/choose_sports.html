@@ -10,15 +10,16 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     
-    
-    {% block head_css %}
-        <link rel="stylesheet" href="{% static 'css/pages/choose_sports.css' %}" />
-    {% endblock head_css %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/pages/choose_sports.css' %}" />
 
-    
 </head>
 <body>
     <div class="background-pattern"></div>
+
+    <a href="{% url 'pages:home' %}" class="back-btn">
+        ← Nazad
+    </a>
 
     <div class="floating-icons">
         <div class="sport-icon-float">⚽</div>
