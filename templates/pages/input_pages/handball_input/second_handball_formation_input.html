@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unos Igrača</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    {% block head_css %}
+        <link rel="stylesheet" href="{% static 'css/pages/sports_input/all_sports_input.css' %}" />
+    {% endblock head_css %}
+
+
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="floating-balls">
+        <div class="sport-ball">🤾</div>
+        <div class="sport-ball">🤾</div>
+        <div class="sport-ball">🤾</div>
+        <div class="sport-ball">🤾</div>
+    </div>
+
+    <a href="{% url 'pages:handball_formats' %}" class="back-btn">
+        ← Nazad
+    </a>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <div class="sport-icon-header">🤾</div>
+                <span class="formation-badge">Formacija: 4 + 1</span>
+                <h1>Unesi Igrače</h1>
+                <hr class="divider" />
+                <p class="subtitle">Popuni imena igrača za generiranje timova</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">💡 Kako funkcionira?</div>
+                <div class="info-box-text">
+                    Unesi imena svih igrača koji će sudjelovati. Sustav će automatski podijeliti igrače u balansirane timove.
+                </div>
+            </div>
+
+            <form method="post">
+                <div class="goalkeeper-section">
+                    <div class="section-title">
+                        <span class="section-icon">🥅</span>
+                        Golmani
+                    </div>
+                    <div class="players-grid">
+                        <div class="input-group">
+                            <label class="input-label">Golman 1</label>
+                            <input type="text" class="player-input" name="goalkeeper_1" placeholder="Ime golmana" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Golman 2</label>
+                            <input type="text" class="player-input" name="goalkeeper_2" placeholder="Ime golmana" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Players Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-icon">👥</span>
+                        Igrači u Polju
+                    </div>
+                    <div class="players-grid" id="playersGrid">
+                        <div class="input-group">
+                            <label class="input-label">Igrač 1</label>
+                            <input type="text" class="player-input" name="player_1" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 2</label>
+                            <input type="text" class="player-input" name="player_2" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 3</label>
+                            <input type="text" class="player-input" name="player_3" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 4</label>
+                            <input type="text" class="player-input" name="player_4" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 5</label>
+                            <input type="text" class="player-input" name="player_5" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 6</label>
+                            <input type="text" class="player-input" name="player_6" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 7</label>
+                            <input type="text" class="player-input" name="player_7" placeholder="Ime igrača" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Igrač 8</label>
+                            <input type="text" class="player-input" name="player_8" placeholder="Ime igrača" required>   </div>
+                    </div>
+                    
+                    <button type="button" class="add-player-btn" onclick="addPlayer()">
+                        <span>➕</span>
+                        Dodaj još igrača
+                    </button>
+                </div>
+
+                <!-- Submit -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-generate">
+                        🎲 Generiraj Timove
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let playerCount = 10;
+
+        function addPlayer() {
+            playerCount++;
+            const playersGrid = document.getElementById('playersGrid');
+            
+            const inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group';
+            inputGroup.style.animation = 'slideUp 0.3s ease-out';
+            
+            inputGroup.innerHTML = `
+                <label class="input-label">Igrač ${playerCount}</label>
+                <input type="text" class="player-input" name="player_${playerCount}" placeholder="Ime igrača">
+            `;
+            
+            playersGrid.appendChild(inputGroup);
+        }
+    </script>
+</body>
+</html>
