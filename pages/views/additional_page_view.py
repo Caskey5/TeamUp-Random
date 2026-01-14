@@ -24,6 +24,7 @@ class PortfolioGridView(TemplateView):
 
 class PortfolioModelsView(TemplateView):
     template_name = "base/additional_pages/portfolio_models.html"
+    
 class ServicesView(TemplateView):
     template_name = "base/additional_pages/services.html"
 

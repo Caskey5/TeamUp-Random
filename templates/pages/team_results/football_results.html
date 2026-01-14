@@ -1,0 +1,554 @@
+{% comment "Rijesi kasnije" %}{% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultati - Team Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            z-index: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(60px); }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #ffd700; }
+        .confetti:nth-child(2) { left: 20%; animation-delay: 0.2s; background: #ffed4e; }
+        .confetti:nth-child(3) { left: 30%; animation-delay: 0.4s; background: #ffd700; }
+        .confetti:nth-child(4) { left: 40%; animation-delay: 0.6s; background: #ffed4e; }
+        .confetti:nth-child(5) { left: 50%; animation-delay: 0.8s; background: #ffd700; }
+        .confetti:nth-child(6) { left: 60%; animation-delay: 1s; background: #ffed4e; }
+        .confetti:nth-child(7) { left: 70%; animation-delay: 1.2s; background: #ffd700; }
+        .confetti:nth-child(8) { left: 80%; animation-delay: 1.4s; background: #ffed4e; }
+        .confetti:nth-child(9) { left: 90%; animation-delay: 1.6s; background: #ffd700; }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 24px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .back-btn:hover {
+            background: #ffd700;
+            color: #1a1a1a;
+            transform: translateX(-5px);
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .results-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .results-header h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .results-subtitle {
+            color: #cbd5e0;
+            font-size: 1.2rem;
+        }
+
+        /* Teams Grid */
+        .teams-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid transparent;
+            transition: all 0.4s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .team-card:nth-child(1) {
+            animation-delay: 0.1s;
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .team-card:nth-child(2) {
+            animation-delay: 0.2s;
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .team-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .team-count {
+            color: #718096;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Players sections */
+        .players-section {
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .goalkeeper-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 237, 78, 0.1));
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .players-list {
+            list-style: none;
+        }
+
+        .player-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .player-item:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+
+        .player-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .player-name {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Info section */
+        .info-section {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Action buttons */
+        .actions-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #2d3748;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            border-color: #ffd700;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 15px 40px;
+            }
+
+            .results-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .success-icon {
+                font-size: 3.5rem;
+            }
+
+            .teams-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .team-card {
+                padding: 25px 20px;
+            }
+
+            .team-name {
+                font-size: 1.6rem;
+            }
+
+            .actions-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Confetti -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <a href="#" class="back-btn">
+        ← Natrag
+    </a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="results-header">
+            <div class="success-icon">🎉</div>
+            <h1>Timovi Generirani!</h1>
+            <p class="results-subtitle">Evo tvoje podjele igrača</p>
+        </div>
+
+        <!-- Teams -->
+        <div class="teams-container">
+            <!-- Tim 1 -->
+            <div class="team-card">
+                <div class="team-header">
+                    <h2 class="team-name">⚽ Tim 1</h2>
+                    <p class="team-count">6 igrača</p>
+                </div>
+
+                <!-- Golman -->
+                <div class="goalkeeper-section">
+                    <div class="section-label">
+                        <span>🥅</span>
+                        Golman
+                    </div>
+                    <ul class="players-list">
+                        <li class="player-item">
+                            <span class="player-number">G</span>
+                            <span class="player-name">Marko Horvat</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Igrači -->
+                <div class="players-section">
+                    <div class="section-label">
+                        <span>👥</span>
+                        Igrači
+                    </div>
+                    <ul class="players-list">
+                        <li class="player-item">
+                            <span class="player-number">1</span>
+                            <span class="player-name">Ivan Kovač</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">2</span>
+                            <span class="player-name">Ana Novak</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">3</span>
+                            <span class="player-name">Luka Perić</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">4</span>
+                            <span class="player-name">Petra Babić</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">5</span>
+                            <span class="player-name">Josip Jurić</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tim 2 -->
+            <div class="team-card">
+                <div class="team-header">
+                    <h2 class="team-name">⚽ Tim 2</h2>
+                    <p class="team-count">6 igrača</p>
+                </div>
+
+                <!-- Golman -->
+                <div class="goalkeeper-section">
+                    <div class="section-label">
+                        <span>🥅</span>
+                        Golman
+                    </div>
+                    <ul class="players-list">
+                        <li class="player-item">
+                            <span class="player-number">G</span>
+                            <span class="player-name">Tomislav Grgić</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Igrači -->
+                <div class="players-section">
+                    <div class="section-label">
+                        <span>👥</span>
+                        Igrači
+                    </div>
+                    <ul class="players-list">
+                        <li class="player-item">
+                            <span class="player-number">1</span>
+                            <span class="player-name">Sara Matić</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">2</span>
+                            <span class="player-name">David Knežević</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">3</span>
+                            <span class="player-name">Mia Tomić</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">4</span>
+                            <span class="player-name">Filip Vuković</span>
+                        </li>
+                        <li class="player-item">
+                            <span class="player-number">5</span>
+                            <span class="player-name">Laura Marić</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info -->
+        <div class="info-section">
+            <h3 class="info-title">💡 Savjet</h3>
+            <p class="info-text">
+                Igrači su nasumično podijeljeni u balansirane timove. Ako nisi zadovoljan podjelom, možeš generirati nove timove klikom na gumb ispod!
+            </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-container">
+            <a href="#" class="btn btn-primary">
+                <span>🔄</span>
+                Generiraj Nove Timove
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <span>📋</span>
+                Spremi Rezultate
+            </a>
+        </div>
+    </div>
+</body>
+</html>

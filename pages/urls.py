@@ -1,6 +1,14 @@
 from django.urls import path
 
 from .views import (
+    BasketballInputView, 
+    FootballInputView, 
+    HandballInputView, 
+    TennisInputView, 
+    VolleyballInputView
+)
+
+from .views import (
     HomePageView,
     ChooseSportView,
     FootballFormatsView,
@@ -32,6 +40,13 @@ urlpatterns = [
     path('sports/tennis_formats/', TennisFormatsView.as_view(), name='tennis_formats'),
     path('sports/handball_formats/', HandballFormatsView.as_view(), name='handball_formats'),
     path('sports/volleyball_formats/', VolleyballFormatsView.as_view(), name='volleyball_formats'),
+
+
+    path('sports/football_input/', FootballInputView.as_view(), name='football_input'),
+    path('sports/basketball_input/', BasketballInputView.as_view(), name='basketball_input'),
+    path('sports/tennis_input/', TennisInputView.as_view(), name='tennis_input'),
+    path('sports/handball_input/', HandballInputView.as_view(), name='handball_input'),
+    path('sports/volleyball_input/', VolleyballInputView.as_view(), name='volleyball_input'),
 
 ]
 

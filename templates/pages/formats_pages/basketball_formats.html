@@ -10,7 +10,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
 
-    <link rel="stylesheet" href="{% static 'css/pages/basketball_formats.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pages/formats_pages/basketball_formats.css' %}" />
 
     
 </head>
@@ -47,7 +47,7 @@
                 <p class="formation-description">
                     Puni teren sa rotacijama. 6 igrača po timu za potpuno košarkaško iskustvo.
                 </p>
-                <button class="select-btn">Odaberi</button>
+                <a href="{% url 'pages:basketball_input' %}" class="select-btn">Odaberi</a>
             </div>
 
             <!-- 3v3 Format -->

@@ -19,3 +19,11 @@ from .formats_view import (
     HandballFormatsView,
     VolleyballFormatsView
 )
+
+from .input_view.football_input_view import (
+    BasketballInputView,
+    FootballInputView,
+    HandballInputView,
+    TennisInputView,
+    VolleyballInputView
+)

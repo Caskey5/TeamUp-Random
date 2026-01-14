@@ -14,7 +14,7 @@
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
 
     {% block head_css %}
-        <link rel="stylesheet" href="{% static 'css/pages/football_formats.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/pages/formats_pages/football_formats.css' %}" />
     {% endblock head_css %}
 
 </head>
@@ -51,7 +51,7 @@
                 <p class="formation-description">
                     Idealno za male terene. 5 igrača u polju + 1 golman.
                 </p>
-                <button class="select-btn">Odaberi</button>
+                <a href="{% url 'pages:football_input' %}" class="select-btn">Odaberi</a>
             </div>
 
             <!-- 4+1 Formation -->
