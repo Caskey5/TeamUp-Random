@@ -21,9 +21,24 @@ from .formats_view import (
 )
 
 from .input_view.football_input_view import (
-    BasketballInputView,
-    FootballInputView,
-    HandballInputView,
-    TennisInputView,
-    VolleyballInputView
+    FirstFootballFormationInputView,
+    SecondFootballFormationInputView,
+    ThirdFootballFormationInputView
 )
+from .input_view.basketball_input_view import (
+    FirstBasketballFormationInputView,
+    SecondBasketballFormationInputView
+)
+from .input_view.tennis_input_view import (
+    FirstTennisFormationInputView
+)
+from .input_view.handball_input_view import (
+    FirstHandballFormationInputView,
+    SecondHandballFormationInputView
+)
+from .input_view.volleyball_input_view import (
+    FirstVolleyballFormationInputView,
+    SecondVolleyballFormationInputView,
+    ThirdVolleyballFormationInputView
+)
+

@@ -1,12 +1,10 @@
 from django.urls import path
 
-from .views import (
-    BasketballInputView, 
-    FootballInputView, 
-    HandballInputView, 
-    TennisInputView, 
-    VolleyballInputView
-)
+from pages.views.input_view.basketball_input_view import FirstBasketballFormationInputView, SecondBasketballFormationInputView
+from pages.views.input_view.football_input_view import FirstFootballFormationInputView, SecondFootballFormationInputView, ThirdFootballFormationInputView
+from pages.views.input_view.handball_input_view import FirstHandballFormationInputView, SecondHandballFormationInputView
+from pages.views.input_view.tennis_input_view import FirstTennisFormationInputView
+from pages.views.input_view.volleyball_input_view import FirstVolleyballFormationInputView, SecondVolleyballFormationInputView, ThirdVolleyballFormationInputView
 
 from .views import (
     HomePageView,
@@ -42,14 +40,23 @@ urlpatterns = [
     path('sports/volleyball_formats/', VolleyballFormatsView.as_view(), name='volleyball_formats'),
 
 
-    path('sports/football_input/', FootballInputView.as_view(), name='football_input'),
-    path('sports/basketball_input/', BasketballInputView.as_view(), name='basketball_input'),
-    path('sports/tennis_input/', TennisInputView.as_view(), name='tennis_input'),
-    path('sports/handball_input/', HandballInputView.as_view(), name='handball_input'),
-    path('sports/volleyball_input/', VolleyballInputView.as_view(), name='volleyball_input'),
+    path('sports/football_formations/first_formation_input/', FirstFootballFormationInputView.as_view(), name='first_football_formation_input'),
+    path('sports/football_formations/second_formation_input/', SecondFootballFormationInputView.as_view(), name='second_football_formation_input'),
+    path('sports/football_formations/third_formation_input/', ThirdFootballFormationInputView.as_view(), name='third_football_formation_input'),
+
+    path('sports/basketball_formations/first_formation_input/', FirstBasketballFormationInputView.as_view(), name='first_basketball_formation_input'),
+    path('sports/basketball_formations/second_formation_input/', SecondBasketballFormationInputView.as_view(), name='second_basketball_formation_input'),
+
+    path('sports/tennis_formations/first_formation_input/', FirstTennisFormationInputView.as_view(), name='first_tennis_formation_input'),
+
+
+    path('sports/handball_formations/first_formation_input/', FirstHandballFormationInputView.as_view(), name='first_handball_formation_input'),
+    path('sports/handball_formations/second_formation_input/', SecondHandballFormationInputView.as_view(), name='second_handball_formation_input'),
+
+
+    path('sports/volleyball_formations/first_formation_input/', FirstVolleyballFormationInputView.as_view(), name='first_volleyball_formation_input'),
+    path('sports/volleyball_formations/second_formation_input/', SecondVolleyballFormationInputView.as_view(), name='second_volleyball_formation_input'),
+    path('sports/volleyball_formations/third_formation_input/', ThirdVolleyballFormationInputView.as_view(), name='third_volleyball_formation_input'),
 
 ]
-
-
-
 
