@@ -1,64 +1,84 @@
- {% load static %}
+{% load static %}
  
- <!-- About-->
-        <section class="page-section" id="about">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+<!-- About-->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">About Us</h2>
+            <h3 class="section-subheading text-muted">The journey of TeamUp! from idea to reality.</h3>
+        </div>
+        <ul class="timeline">
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/1.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>2024</h4>
+                        <h4 class="subheading">The Beginning</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">
+                            It all started with a simple problem - how to quickly and fairly divide players into teams? 
+                            Instead of manual selection and long discussions, we decided to create a solution that does it in just a few clicks.
+                        </p>
+                    </div>
                 </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/1.jpg' %}" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/2.jpg' %}" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/3.jpg' %}" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/4.jpg' %}" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Be Part
-                                <br />
-                                Of Our
-                                <br />
-                                Story!
-                            </h4>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/2.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Development</h4>
+                        <h4 class="subheading">Building the Platform</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">
+                            We developed an intuitive platform that enables team generation for various sports. 
+                            The focus was on ease of use and fair player distribution using advanced algorithms.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/3.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Expansion</h4>
+                        <h4 class="subheading">Adding More Sports</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">
+                            After initial success with football, we expanded support to basketball, volleyball, handball, and tennis. 
+                            Each sport has its own specific formations and distribution rules.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/4.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Today</h4>
+                        <h4 class="subheading">Helping Thousands of Players</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">
+                            TeamUp! is now used by sports clubs, schools, and groups of friends across the region. 
+                            Our mission is to simplify sports organization and enable fair play for everyone.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        Be Part
+                        <br />
+                        Of Our
+                        <br />
+                        Story!
+                    </h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
