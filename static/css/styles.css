@@ -11314,3 +11314,80 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+
+/* TeamUp Logo Styling */
+.teamup-logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: #ffd700;
+  text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(255, 215, 0, 0.3);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.navbar-brand:hover .teamup-logo {
+  color: #ffed4e;
+  text-shadow: 
+      3px 3px 6px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba(255, 215, 0, 0.5);
+  transform: scale(1.05);
+}
+
+/* Navbar brand link styling */
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Portfolio Image Fix - Iste dimenzije za sve slike */
+.portfolio-item img {
+  width: 100%;
+  height: 350px; /* Fiksna visina */
+  object-fit: cover; /* Reže sliku da stane bez deformacije */
+  object-position: center; /* Centrira sliku */
+}
+
+/* Za manje ekrane */
+@media (max-width: 768px) {
+  .portfolio-item img {
+      height: 250px;
+  }
+}
+
+/* Opciono: Dodaj border radius za ljepši izgled */
+.portfolio-item img {
+  border-radius: 8px;
+}
+
+/* Smooth transition na hover */
+.portfolio-item {
+  overflow: hidden;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Portfolio Modal Image Fix - Iste dimenzije */
+.portfolio-modal .modal-body img {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin: 20px auto;
+}
+
+/* Za manje ekrane */
+@media (max-width: 768px) {
+  .portfolio-modal .modal-body img {
+    height: 250px;
+  }
+}
