@@ -1,45 +1,52 @@
 {% load static %}  
-  <!-- Team-->
-        <section class="page-section bg-light" id="team">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="{% static 'assets/img/team/1.jpg' %}" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="{% static 'assets/img/team/2.jpg' %}" alt="..." />
-                            <h4>Diana Petersen</h4>
-                            <p class="text-muted">Lead Marketer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="{% static 'assets/img/team/3.jpg' %}" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+<!-- Team-->
+
+{% block css %}
+     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Meet The Developer</h2>
+            <h3 class="section-subheading text-muted">The person behind TeamUp!</h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{% static 'assets/img/team/developer.jpg' %}" alt="Developer" />
+                    <h4>Your Name</h4>
+                    <p class="text-muted">Full Stack Developer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/yourusername" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="mailto:your.email@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <p class="large text-muted">
+                    TeamUp! is a portfolio project developed to demonstrate proficiency in the Django framework and modern web development practices. 
+                    This application showcases skills in full-stack development, including database design, user authentication, responsive UI/UX design, 
+                    and algorithm implementation for fair team generation. Built with passion for sports and technology, TeamUp! represents a practical 
+                    solution to a real-world problem while serving as a learning journey through Django's powerful features.
+                </p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-10 mx-auto">
+                <div class="tech-stack text-center">
+                    <h5 class="mb-3" style="color: #6c757d; font-weight: 600;">Technologies Used</h5>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <span class="badge bg-dark px-3 py-2">Django</span>
+                        <span class="badge bg-dark px-3 py-2">Python</span>
+                        <span class="badge bg-dark px-3 py-2">Bootstrap</span>
+                        <span class="badge bg-dark px-3 py-2">JavaScript</span>
+                        <span class="badge bg-dark px-3 py-2">HTML5 & CSS3</span>
+                        <span class="badge bg-dark px-3 py-2">SQLite/PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

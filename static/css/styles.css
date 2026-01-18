@@ -11391,3 +11391,29 @@ section#contact form#contactForm :-ms-input-placeholder {
     height: 250px;
   }
 }
+
+/* Team member image - Ista veličina */
+.team-member img {
+  width: 225px;
+  height: 225px;
+  object-fit: cover;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Tech stack badges */
+.tech-stack .badge {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Gap za flex wrap na starijim browserima */
+.gap-3 > * {
+  margin: 0.5rem;
+}
+
+/* Social button hover efekt */
+.btn-social:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+}
