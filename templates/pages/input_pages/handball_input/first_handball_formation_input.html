@@ -48,6 +48,12 @@
             </div>
 
             <form method="post">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="form-error">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
                 <div class="goalkeeper-section">
                     <div class="section-title">
                         <span class="section-icon">🥅</span>

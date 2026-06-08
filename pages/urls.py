@@ -1,5 +1,6 @@
 from django.urls import path
 
+from pages.views.results_view import TeamResultsView
 from pages.views.input_view.basketball_input_view import FirstBasketballFormationInputView, SecondBasketballFormationInputView
 from pages.views.input_view.football_input_view import FirstFootballFormationInputView, SecondFootballFormationInputView, ThirdFootballFormationInputView
 from pages.views.input_view.handball_input_view import FirstHandballFormationInputView, SecondHandballFormationInputView
@@ -58,5 +59,6 @@ urlpatterns = [
     path('sports/volleyball_formations/second_formation_input/', SecondVolleyballFormationInputView.as_view(), name='second_volleyball_formation_input'),
     path('sports/volleyball_formations/third_formation_input/', ThirdVolleyballFormationInputView.as_view(), name='third_volleyball_formation_input'),
 
+    path('results/<int:pk>/', TeamResultsView.as_view(), name='team_results'),
 ]
 

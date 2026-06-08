@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultati - TeamUp!</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/pages/team_results/team_results.css' %}" />
+</head>
+<body>
+    <div class="background-pattern"></div>
+
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">← Natrag</a>
+
+    <div class="container">
+        <div class="results-header">
+            <div class="success-icon">🎉</div>
+            <h1>Timovi Generirani!</h1>
+            <p class="results-subtitle">
+                {{ generation.formation.sport.display_name }} · {{ generation.formation.display_name }}
+            </p>
+        </div>
+
+        {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="teams-container">
+            {% for team in generation.teams.all %}
+                <div class="team-card">
+                    <div class="team-header">
+                        <h2 class="team-name">{{ team.name }}</h2>
+                        <p class="team-count">{{ team.player_count }} igrača</p>
+                    </div>
+
+                    {% if generation.formation.has_goalkeeper %}
+                        <div class="goalkeeper-section">
+                            <div class="section-label">
+                                <span>🥅</span>
+                                Golman
+                            </div>
+                            <ul class="players-list">
+                                {% for player in team.players.all %}
+                                    {% if player.is_goalkeeper %}
+                                        <li class="player-item">
+                                            <span class="player-number">G</span>
+                                            <span class="player-name">{{ player.name }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <div class="players-section">
+                        <div class="section-label">
+                            <span>👥</span>
+                            Igrači
+                        </div>
+                        <ul class="players-list">
+                            {% for player in team.players.all %}
+                                {% if not player.is_goalkeeper %}
+                                    <li class="player-item">
+                                        <span class="player-number">{{ forloop.counter }}</span>
+                                        <span class="player-name">{{ player.name }}</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="info-section">
+            <h3 class="info-title">💡 Savjet</h3>
+            <p class="info-text">
+                Igrači su nasumično podijeljeni u balansirane timove. Ako nisi zadovoljan podjelom, možeš generirati nove timove klikom na gumb ispod!
+            </p>
+        </div>
+
+        <div class="actions-container">
+            <form method="post" class="inline-form">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="regenerate">
+                <button type="submit" class="btn btn-primary">
+                    <span>🔄</span>
+                    Generiraj Nove Timove
+                </button>
+            </form>
+            <form method="post" class="inline-form">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="save">
+                <button type="submit" class="btn btn-secondary">
+                    <span>📋</span>
+                    Spremi Rezultate
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -354,6 +354,17 @@
         }
 
         /* Responsive */
+        .form-error {
+            background: rgba(229, 62, 62, 0.12);
+            border: 2px solid #e53e3e;
+            color: #c53030;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 80px 15px 30px;
