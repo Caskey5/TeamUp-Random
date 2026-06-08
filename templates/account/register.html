@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija - TeamUp!</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <a href="{% url 'pages:home' %}" class="back-btn">← Početna</a>
+    {% include 'account/_account_bar.html' %}
+
+    <div class="container">
+        <div class="auth-card">
+            <h1>Registracija</h1>
+            <p class="subtitle">Kreiraj račun i spremi povijest generiranih timova</p>
+
+            <form method="post">
+                {% csrf_token %}
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Kreiraj račun</button>
+            </form>
+
+            <p class="auth-links">
+                Već imaš račun?
+                <a href="{% url 'account:login' %}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">Prijavi se</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

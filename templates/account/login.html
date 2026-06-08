@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava - TeamUp!</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <a href="{% url 'pages:home' %}" class="back-btn">← Početna</a>
+    {% include 'account/_account_bar.html' %}
+
+    <div class="container">
+        <div class="auth-card">
+            <h1>Prijava</h1>
+            <p class="subtitle">Prijavi se da spremiš i pregledaš svoje timove</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% endif %}
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-error">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Prijavi se</button>
+            </form>
+
+            <p class="auth-links">
+                Nemaš račun?
+                <a href="{% url 'account:register' %}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">Registriraj se</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

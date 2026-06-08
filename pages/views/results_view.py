@@ -25,7 +25,5 @@ class TeamResultsView(View):
         if action == 'regenerate':
             regenerate_teams(generation)
             messages.success(request, 'Timovi su ponovno generirani!')
-        elif action == 'save':
-            messages.success(request, 'Rezultati su spremljeni u bazu podataka.')
 
         return redirect('pages:team_results', pk=generation.pk)

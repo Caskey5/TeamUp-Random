@@ -7,9 +7,11 @@
     <title>Rezultati - TeamUp!</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/pages/team_results/team_results.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
 </head>
 <body>
     <div class="background-pattern"></div>
+    {% include 'account/_account_bar.html' %}
 
     <div class="confetti"></div>
     <div class="confetti"></div>
@@ -103,15 +105,28 @@
                     Generiraj Nove Timove
                 </button>
             </form>
-            <form method="post" class="inline-form">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="save">
-                <button type="submit" class="btn btn-secondary">
+
+            {% if generation.is_saved and user.is_authenticated and generation.user_id == user.id %}
+                <a href="{% url 'account:history' %}" class="btn btn-secondary">
+                    <span>✅</span>
+                    Spremljeno u računu
+                </a>
+            {% elif user.is_authenticated %}
+                <a href="{% url 'account:save_generation' generation.pk %}" class="btn btn-secondary">
                     <span>📋</span>
                     Spremi Rezultate
-                </button>
-            </form>
+                </a>
+            {% else %}
+                <a href="{% url 'account:login' %}?next={% url 'account:save_generation' generation.pk %}" class="btn btn-secondary">
+                    <span>📋</span>
+                    Spremi Rezultate
+                </a>
+            {% endif %}
         </div>
+
+        {% if not user.is_authenticated %}
+            <p class="save-hint">Za spremanje rezultata potrebna je prijava ili registracija.</p>
+        {% endif %}
     </div>
 </body>
 </html>

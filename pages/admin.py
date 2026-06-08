@@ -29,8 +29,8 @@ class FormationAdmin(admin.ModelAdmin):
 
 @admin.register(TeamGeneration)
 class TeamGenerationAdmin(admin.ModelAdmin):
-    list_display = ('formation', 'total_players', 'created_at')
-    list_filter = ('formation__sport', 'created_at')
+    list_display = ('formation', 'user', 'is_saved', 'total_players', 'created_at', 'saved_at')
+    list_filter = ('is_saved', 'formation__sport', 'created_at')
     inlines = [GeneratedTeamInline]
 
 

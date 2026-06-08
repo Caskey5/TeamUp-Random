@@ -1,0 +1,9 @@
+<div class="top-bar">
+    {% if user.is_authenticated %}
+        <a href="{% url 'account:history' %}">Moj račun</a>
+        <a href="{% url 'account:logout' %}">Odjava</a>
+    {% else %}
+        <a href="{% url 'account:login' %}">Prijava</a>
+        <a href="{% url 'account:register' %}">Registracija</a>
+    {% endif %}
+</div>

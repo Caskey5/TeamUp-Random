@@ -12,10 +12,12 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/pages/choose_sports.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
 
 </head>
 <body>
     <div class="background-pattern"></div>
+    {% include 'account/_account_bar.html' %}
 
     <a href="{% url 'pages:home' %}" class="back-btn">
         ← Nazad

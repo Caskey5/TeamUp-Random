@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spremljeni tim - TeamUp!</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pages/team_results/team_results.css' %}" />
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <a href="{% url 'account:history' %}" class="back-btn">← Povijest</a>
+    {% include 'account/_account_bar.html' %}
+
+    <div class="container" style="max-width: 1200px;">
+        <div class="results-header">
+            <div class="success-icon">{{ generation.formation.sport_icon }}</div>
+            <h1>{{ generation.formation.sport.display_name }} · {{ generation.formation.display_name }}</h1>
+            <p class="results-subtitle">Spremljeno {{ generation.saved_at|date:"d.m.Y. u H:i" }}</p>
+        </div>
+
+        <div class="teams-container">
+            {% for team in generation.teams.all %}
+                <div class="team-card">
+                    <div class="team-header">
+                        <h2 class="team-name">{{ team.name }}</h2>
+                        <p class="team-count">{{ team.player_count }} igrača</p>
+                    </div>
+
+                    {% if generation.formation.has_goalkeeper %}
+                        <div class="goalkeeper-section">
+                            <div class="section-label">
+                                <span>🥅</span>
+                                Golman
+                            </div>
+                            <ul class="players-list">
+                                {% for player in team.players.all %}
+                                    {% if player.is_goalkeeper %}
+                                        <li class="player-item">
+                                            <span class="player-number">G</span>
+                                            <span class="player-name">{{ player.name }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <div class="players-section">
+                        <div class="section-label">
+                            <span>👥</span>
+                            Igrači
+                        </div>
+                        <ul class="players-list">
+                            {% for player in team.players.all %}
+                                {% if not player.is_goalkeeper %}
+                                    <li class="player-item">
+                                        <span class="player-number">{{ forloop.counter }}</span>
+                                        <span class="player-name">{{ player.name }}</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

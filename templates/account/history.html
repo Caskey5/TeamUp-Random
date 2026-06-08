@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moj račun - TeamUp!</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/account/account.css' %}" />
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <a href="{% url 'pages:choose_sports' %}" class="back-btn">← Sportovi</a>
+    {% include 'account/_account_bar.html' %}
+
+    <div class="container">
+        <div class="history-card">
+            <h1>Moj račun</h1>
+            <p class="subtitle">Pozdrav, {{ user.username }}! Ovdje su tvoji spremljeni timovi.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {% regroup generations by formation.sport as sport_list %}
+            {% if sport_list %}
+                {% for sport in sport_list %}
+                    <div class="sport-group">
+                        <h2 class="sport-group-title">
+                            <span>{{ sport.list.0.formation.sport_icon }}</span>
+                            {{ sport.grouper.display_name }}
+                        </h2>
+
+                        {% for generation in sport.list %}
+                            <a href="{% url 'account:saved_generation' generation.pk %}" class="history-item">
+                                <div>
+                                    <strong>{{ generation.formation.display_name }}</strong>
+                                    <div class="history-item-meta">
+                                        {{ generation.total_players }} igrača · {{ generation.saved_at|date:"d.m.Y. H:i" }}
+                                    </div>
+                                </div>
+                                <span>→</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <p>Još nemaš spremljenih timova.</p>
+                    <p>Generiraj timove i klikni <strong>Spremi rezultate</strong> da ih vidiš ovdje.</p>
+                </div>
+            {% endif %}
+
+            <div class="history-actions">
+                <a href="{% url 'pages:choose_sports' %}" class="btn btn-primary">Generiraj nove timove</a>
+                <a href="{% url 'account:logout' %}" class="btn btn-secondary">Odjava</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

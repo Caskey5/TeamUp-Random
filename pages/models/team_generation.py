@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from pages.models.formation import Formation
@@ -9,9 +10,18 @@ class TeamGeneration(models.Model):
         on_delete=models.CASCADE,
         related_name='generations',
     )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='saved_generations',
+        null=True,
+        blank=True,
+    )
     goalkeepers = models.JSONField(default=list, blank=True)
     field_players = models.JSONField(default=list, blank=True)
+    is_saved = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    saved_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Generiranje timova'

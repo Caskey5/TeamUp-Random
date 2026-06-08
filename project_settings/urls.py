@@ -20,6 +20,5 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('pages.urls', 'pages'), namespace='pages')),
-    #path('account/', include(('account.urls', 'account'), namespace='account')),
-    #path('choose_sports/', include(('generate_team.urls', 'generate_team'), namespace='generate_team')),
+    path('account/', include(('account.urls', 'account'), namespace='account')),
 ]
